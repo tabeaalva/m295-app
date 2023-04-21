@@ -1,69 +1,59 @@
 package ch.ilv.m295.demoapp.department.Event;
 
-import java.util.Optional;
-
-import org.hibernate.mapping.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import org.yaml.snakeyaml.events.Event;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import ch.ilv.m295.demoapp.security.Roles;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+
+import java.util.List;
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
-@RequestMapping("/events")
+@Validated
 public class EventController {
 
-    @Autowired
-    private eventRepository eventRepository;
+    private final EventService EventService;
 
-    @GetMapping
-    public List<Event> getAllEvents() {
-        return EventRepository.findAll();
+    EventController(EventService EventService) {
+        this.EventService = EventService;
     }
 
-    @GetMapping("/{id}")
-    public Event getEventById(@PathVariable Long id) {
-        Optional<Event> optionalEvent = EventRepository.findById(id);
-        if (optionalEvent.isPresent()) {
-            return optionalEvent.get();
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found");
-        }
+    @GetMapping("api/Event")
+    @RolesAllowed(Roles.Read)
+    public ResponseEntity<List<Event>> all() {
+        List<Event> result = EventService.getEvents();
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Event createEvent(@RequestBody Event event) {
-        return EventRepository.save(event);
+    @GetMapping("api/Event/{id}")
+    @RolesAllowed(Roles.Read)
+    public ResponseEntity<Event> one(@PathVariable Long id) {
+        Event Event = EventService.getEvent(id);
+        return new ResponseEntity<>(Event, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public Event updateEvent(@PathVariable Long id, @RequestBody Event updatedEvent) {
-        Optional<Event> optionalEvent = EventRepository.findById(id);
-        if (optionalEvent.isPresent()) {
-            Event event = optionalEvent.get();
-            event.setTitle(updatedEvent.getTitle());
-            event.setDescription(updatedEvent.getDescription());
-            event.setStartDateTime(updatedEvent.getStartDateTime());
-            event.setEndDateTime(updatedEvent.getEndDateTime());
-            return EventRepository.save(event);
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Event not found");
-        }
+    @PostMapping("api/Event")
+    @RolesAllowed(Roles.Read)
+    public ResponseEntity<Event> newEvent(@Valid @RequestBody Event Event) {
+        Event savedEvent = EventService.insertEvent(Event);
+        return new ResponseEntity<>(savedEvent, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @PutMapping("api/Event/{id}")
+    @RolesAllowed(Roles.Read)
+    public ResponseEntity<Event> updateEvent(@Valid @RequestBody Event Event, @PathVariable Long id) {
+        Event savedEvent = EventService.updateEvent(Event, id);
+        return new ResponseEntity<>(savedEvent, HttpStatus.OK);
+    }
+
+    @DeleteMapping("api/Event/{id}")
+    @RolesAllowed(Roles.Read)
     public void deleteEvent(@PathVariable Long id) {
-        EventRepository.deleteById(id);
+        EventService.deleteEvent(id);
     }
-
 }
