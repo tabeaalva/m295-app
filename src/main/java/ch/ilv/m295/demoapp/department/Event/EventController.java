@@ -38,21 +38,21 @@ public class EventController {
     }
 
     @PostMapping("api/Event")
-    @RolesAllowed(Roles.Read)
+    @RolesAllowed(Roles.Update)
     public ResponseEntity<Event> newEvent(@Valid @RequestBody Event Event) {
         Event savedEvent = EventService.insertEvent(Event);
         return new ResponseEntity<>(savedEvent, HttpStatus.OK);
     }
 
     @PutMapping("api/Event/{id}")
-    @RolesAllowed(Roles.Read)
+    @RolesAllowed(Roles.Update)
     public ResponseEntity<Event> updateEvent(@Valid @RequestBody Event Event, @PathVariable Long id) {
         Event savedEvent = EventService.updateEvent(Event, id);
         return new ResponseEntity<>(savedEvent, HttpStatus.OK);
     }
 
     @DeleteMapping("api/Event/{id}")
-    @RolesAllowed(Roles.Read)
+    @RolesAllowed(Roles.Update)
     public void deleteEvent(@PathVariable Long id) {
         EventService.deleteEvent(id);
     }

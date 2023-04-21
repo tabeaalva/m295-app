@@ -1,7 +1,6 @@
 package ch.ilv.m295.demoapp.department.Event;
 
 import java.sql.Date;
-import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,12 +25,12 @@ public class Event {
     @Column(nullable = false)
     @Size(max = 255)
     @NotEmpty
-    private Date date;
+    private Date startDate;
 
     @Column(nullable = false)
     @Size(max = 255)
     @NotEmpty
-    private Time time;
+    private Date endDate;
 
     public Event() {
     }
