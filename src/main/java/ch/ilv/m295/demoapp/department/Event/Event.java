@@ -23,13 +23,9 @@ public class Event {
     private String name;
 
     @Column(nullable = false)
-    @Size(max = 255)
-    @NotEmpty
     private Date startDate;
 
     @Column(nullable = false)
-    @Size(max = 255)
-    @NotEmpty
     private Date endDate;
 
     public Event() {
