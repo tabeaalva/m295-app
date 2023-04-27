@@ -10,14 +10,13 @@ Die Applikation bietet folgende Funktionen:
 2. Erstellen von Kalenderereignissen
 3. Aktualisieren von Kalenderereignissen
 4. Löschen von Kalenderereignissen
-5. Ort
-6. Kategorien
-7. Member
+5. Orte zuweisen
+6. Kategorien zuweisen
+7. Member erstellen
 8. Authentifizierung
-9. Postman
+9. Postman: REST-API-Endpunkte testen
 10. Absicherung der REST-Controller
 11. Integration von Swagger UI
-12. Ablage auf GitHub
 
 ## Technologien
 
