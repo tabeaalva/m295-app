@@ -23,35 +23,35 @@ public class CategoryController {
         this.CategoryService = CategoryService;
     }
 
-    @GetMapping("api/Category")
+    @GetMapping("api/category")
     @RolesAllowed(Roles.Read)
     public ResponseEntity<List<Category>> all() {
         List<Category> result = CategoryService.getCategorys();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("api/Category/{id}")
+    @GetMapping("api/category/{id}")
     @RolesAllowed(Roles.Read)
     public ResponseEntity<Category> one(@PathVariable Long id) {
         Category Category = CategoryService.getCategory(id);
         return new ResponseEntity<>(Category, HttpStatus.OK);
     }
 
-    @PostMapping("api/Category")
+    @PostMapping("api/category")
     @RolesAllowed(Roles.Update)
     public ResponseEntity<Category> newCategory(@Valid @RequestBody Category Category) {
         Category savedCategory = CategoryService.insertCategory(Category);
         return new ResponseEntity<>(savedCategory, HttpStatus.OK);
     }
 
-    @PutMapping("api/Category/{id}")
+    @PutMapping("api/category/{id}")
     @RolesAllowed(Roles.Update)
     public ResponseEntity<Category> updateCategory(@Valid @RequestBody Category Category, @PathVariable Long id) {
         Category savedCategory = CategoryService.updateCategory(Category, id);
         return new ResponseEntity<>(savedCategory, HttpStatus.OK);
     }
 
-    @DeleteMapping("api/Category/{id}")
+    @DeleteMapping("api/category/{id}")
     @RolesAllowed(Roles.Admin)
     public void deleteCategory(@PathVariable Long id) {
         CategoryService.deleteCategory(id);

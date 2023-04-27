@@ -23,35 +23,35 @@ public class PlaceController {
         this.PlaceService = PlaceService;
     }
 
-    @GetMapping("api/Place")
+    @GetMapping("api/place")
     @RolesAllowed(Roles.Read)
     public ResponseEntity<List<Place>> all() {
         List<Place> result = PlaceService.getPlaces();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping("api/Place/{id}")
+    @GetMapping("api/place/{id}")
     @RolesAllowed(Roles.Read)
     public ResponseEntity<Place> one(@PathVariable Long id) {
         Place Place = PlaceService.getPlace(id);
         return new ResponseEntity<>(Place, HttpStatus.OK);
     }
 
-    @PostMapping("api/Place")
+    @PostMapping("api/place")
     @RolesAllowed(Roles.Update)
     public ResponseEntity<Place> newPlace(@Valid @RequestBody Place Place) {
         Place savedPlace = PlaceService.insertPlace(Place);
         return new ResponseEntity<>(savedPlace, HttpStatus.OK);
     }
 
-    @PutMapping("api/Place/{id}")
+    @PutMapping("api/place/{id}")
     @RolesAllowed(Roles.Update)
     public ResponseEntity<Place> updatePlace(@Valid @RequestBody Place Place, @PathVariable Long id) {
         Place savedPlace = PlaceService.updatePlace(Place, id);
         return new ResponseEntity<>(savedPlace, HttpStatus.OK);
     }
 
-    @DeleteMapping("api/Place/{id}")
+    @DeleteMapping("api/place/{id}")
     @RolesAllowed(Roles.Admin)
     public void deletePlace(@PathVariable Long id) {
         PlaceService.deletePlace(id);

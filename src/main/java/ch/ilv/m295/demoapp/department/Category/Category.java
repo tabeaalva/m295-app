@@ -20,7 +20,10 @@ public class Category {
     @NotEmpty
     private String name;
 
-
     public Category() {
+    }
+
+    public Category(String name) {
+        this.name = name;
     }
 }
