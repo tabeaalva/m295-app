@@ -8,7 +8,7 @@
         <version>3.0.5</version>
         <relativePath/>
     </parent>
-    <groupId>ch.ilv.m295</groupId>
+    <groupId>tabea.reiffer.calendar</groupId>
     <artifactId>m-295-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>demo-app</name>
