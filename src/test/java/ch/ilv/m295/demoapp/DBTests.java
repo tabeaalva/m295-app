@@ -7,8 +7,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.fasterxml.jackson.core.sym.Name;
-
 import ch.ilv.m295.demoapp.department.Category.Category;
 import ch.ilv.m295.demoapp.department.Category.CategoryRepository;
 
