@@ -1,4 +1,4 @@
-package ch.tabea.reiffer.calendar.department.Place;
+package ch.tabea.reiffer.calendar.Place;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;

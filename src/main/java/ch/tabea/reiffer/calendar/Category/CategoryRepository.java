@@ -1,4 +1,4 @@
-package ch.tabea.reiffer.calendar.department.Category;
+package ch.tabea.reiffer.calendar.Category;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

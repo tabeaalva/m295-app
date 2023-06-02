@@ -1,4 +1,4 @@
-package ch.tabea.reiffer.calendar.department.Category;
+package ch.tabea.reiffer.calendar.Place;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Category {
+public class Place {
     @Id
     @GeneratedValue
     private Long id;
@@ -20,10 +20,15 @@ public class Category {
     @NotEmpty
     private String name;
 
-    public Category() {
+    @Column(nullable = false)
+    @Size(max = 255)
+    @NotEmpty
+    private String description;
+
+    public Place() {
     }
 
-    public Category(String name) {
+    public Place (String name) {
         this.name = name;
     }
 }

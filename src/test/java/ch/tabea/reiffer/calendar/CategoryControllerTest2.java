@@ -3,9 +3,9 @@ package ch.tabea.reiffer.calendar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import ch.tabea.reiffer.calendar.department.Category.Category;
-import ch.tabea.reiffer.calendar.department.Category.CategoryRepository;
-import ch.tabea.reiffer.calendar.department.Category.CategoryService;
+import ch.tabea.reiffer.calendar.Category.Category;
+import ch.tabea.reiffer.calendar.Category.CategoryRepository;
+import ch.tabea.reiffer.calendar.Category.CategoryService;
 
 import java.util.Optional;
 

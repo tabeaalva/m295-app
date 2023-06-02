@@ -1,11 +1,12 @@
-package ch.tabea.reiffer.calendar.department.Event;
+package ch.tabea.reiffer.calendar.Event;
 
 import java.sql.Date;
+import java.util.Set;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import ch.tabea.reiffer.calendar.Category.Category;
+import ch.tabea.reiffer.calendar.Member.Member;
+import ch.tabea.reiffer.calendar.Place.Place;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -27,6 +28,17 @@ public class Event {
 
     @Column(nullable = false)
     private Date endDate;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name="place_id")
+    Place place;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name="category_id")
+    Category category;
+
+    @ManyToMany()
+    Set<Member> members;
 
     public Event() {
     }

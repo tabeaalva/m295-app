@@ -7,8 +7,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import ch.tabea.reiffer.calendar.department.Category.Category;
-import ch.tabea.reiffer.calendar.department.Category.CategoryRepository;
+import ch.tabea.reiffer.calendar.Category.Category;
+import ch.tabea.reiffer.calendar.Category.CategoryRepository;
 
 @DataJpaTest()
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

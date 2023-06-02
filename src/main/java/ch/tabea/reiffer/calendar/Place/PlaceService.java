@@ -1,4 +1,4 @@
-package ch.tabea.reiffer.calendar.department.Place;
+package ch.tabea.reiffer.calendar.Place;
 
 import org.springframework.stereotype.Service;
 
